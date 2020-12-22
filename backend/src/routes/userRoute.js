@@ -3,7 +3,7 @@ const express = require('express')
 const router = express.Router()
 
 const usersController = require('../services/user/controller/userController');
-const { verifyJWT,authenticate,logout } = require('../services/auth/controller/authController');
+const { verifyJWT, authenticate, logout } = require('../services/auth/controller/authController');
 
 router.post('/login',trimRequest.all, authenticate);
 

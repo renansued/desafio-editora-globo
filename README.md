@@ -10,6 +10,6 @@ propostas vs alcançadas || Metas
     Ok    ||     OK     || Técnicas modernas - (Arrow functions, Default value of parameters, Destructuring, Rest e Spread, Import e Export, Template Literals, etc)
     Ok    ||     OK     || Projeto conteinerizado 
     Ok    || incompleto || Uso do Redux
-    Ok    || incompleto || Implementação de processo de autenticação na API
+    Ok    ||     OK     || Implementação de processo de autenticação na API
 
 

@@ -24,10 +24,6 @@ class NewsDataService {
   deleteAll() {
     return http.delete(`/news`);
   }
-
-  findByTitle(title) {
-    return http.get(`/news?title=${title}`);
-  }
 }
 
 export default new NewsDataService();

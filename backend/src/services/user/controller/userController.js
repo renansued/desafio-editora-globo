@@ -1,4 +1,5 @@
 const userDB  = require('../models/userModel');
+const CryptoJS = require('crypto-js');
 
 module.exports = {
 
@@ -28,7 +29,7 @@ module.exports = {
         const newUser = new userDB({
             name: req.body.name,
             login: req.body.login,
-            password: req.body.password
+            password:  CryptoJS.MD5(req.body.password)
         });
   
         const user = await newUser
@@ -47,7 +48,7 @@ module.exports = {
         const userUpdated = { 
             name: req.body.name,
             login: req.body.login,
-            password: req.body.password
+            password: CryptoJS.MD5(req.body.password)
         }
     
         const user = await userDB.findOneAndUpdate({ _id: req.params.id }, userUpdated, { new: true })

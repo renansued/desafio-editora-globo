@@ -72,7 +72,6 @@ export default class News extends Component {
           publishDate: publishDate,
           publishTime: publishTime
         });
-        console.log(response.data);
       })
       .catch(e => {
         console.log(e);

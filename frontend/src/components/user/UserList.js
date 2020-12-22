@@ -1,34 +1,33 @@
 import React, { Component } from "react";
-import NewsDataService from "../../services/news.service";
-import { Link,withRouter } from "react-router-dom";
+import UserDataService from "../../services/user.service";
+import { Link } from "react-router-dom";
 
-class NewsList extends Component {
+export default class UserList extends Component {
   constructor(props) {
     super(props);
-    this.retrieveNews = this.retrieveNews.bind(this);
+    this.retrieveUser = this.retrieveUser.bind(this);
     this.refreshList = this.refreshList.bind(this);
-    this.setActiveNews = this.setActiveNews.bind(this);
+    this.setActiveUser = this.setActiveUser.bind(this);
 
     this.state = {
-      news: [],
-      currentNews: null,
+      user: [],
+      currentUser: null,
       currentIndex: -1,
     };
   }
 
   componentDidMount() {
-    setTimeout(this.retrieveNews(),1000)
-    
+    this.retrieveUser();
   }
 
-  retrieveNews() {
+  retrieveUser() {
 
-    NewsDataService.getAll()
+    UserDataService.getAll()
       .then((response) => {
-        const news = response.data;
+        const user = response.data;
        
         this.setState({
-          news: news
+          user: user
         });
         console.log(response.data);
       })
@@ -38,74 +37,68 @@ class NewsList extends Component {
   }
 
   refreshList() {
-    this.retrieveNews();
+    this.retrieveUser();
     this.setState({
-      currentNews: null,
+      currentUser: null,
       currentIndex: -1,
     });
   }
 
-  setActiveNews(news, index) {
+  setActiveUser(user, index) {
     this.setState({
-      currentNews: news,
+      currentUser: user,
       currentIndex: index,
     });
   }
 
   render() {
     const {
-      news,
-      currentNews,
+      user,
+      currentUser,
       currentIndex,
     } = this.state;
 
     return (
       <div className="list row">
         <div className="col-md-6">
-          <h4>Lista de Notícias</h4>
+          <h4>Lista de Usuários</h4>
 
           <ul className="list-group">
-            {news &&
-              news.map((news, index) => (
+            {user &&
+              user.map((user, index) => (
                 <li
                   className={
                     "list-group-item " +
                     (index === currentIndex ? "active" : "")
                   }
-                  onClick={() => this.setActiveNews(news, index)}
+                  onClick={() => this.setActiveUser(user, index)}
                   key={index}
                 >
-                  {news.title}
+                  {user.title}
                 </li>
               ))}
           </ul>
 
         </div>
         <div className="col-md-6">
-          {currentNews ? (
+          {currentUser ? (
             <div>
               <h4>Notícias</h4>
               <div>
                 <label>
-                  <strong>Título:</strong>
+                  <strong>Nome:</strong>
                 </label>{" "}
-                {currentNews.title}
+                {currentUser.name}
               </div>
               <div>
                 <label>
-                  <strong>Conteúdo:</strong>
+                  <strong>Login:</strong>
                 </label>{" "}
-                {currentNews.content}
-              </div>
-              <div>
-                <label>
-                  <strong>Data de Publicação:</strong>
-                </label>{" "}
-                {currentNews.publishDate.split("T")[0] + " às " + currentNews.publishDate.split("T")[1]}
+                {currentUser.login}
               </div>
 
               <Link
-                to={"/news/" + currentNews._id}
+                to={"/user/" + currentUser._id}
                 className="badge badge-warning"
               >
                 Editar
@@ -114,7 +107,7 @@ class NewsList extends Component {
           ) : (
             <div>
               <br />
-              <p>Selecione uma notícia</p>
+              <p>Selecione um usuário</p>
             </div>
           )}
         </div>
@@ -122,5 +115,3 @@ class NewsList extends Component {
     );
   }
 }
-
-export default withRouter(NewsList);

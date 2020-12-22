@@ -1,17 +1,22 @@
-//import trimRequest from 'trim-request'
+const trimRequest = require('trim-request')
 const express = require('express')
 const router = express.Router()
 
-const usersController = require('../services/user/controller/userController')
+const usersController = require('../services/user/controller/userController');
+const { verifyJWT,authenticate,logout } = require('../services/auth/controller/authController');
 
-router.get('/all', usersController.getList);
+router.post('/login',trimRequest.all, authenticate);
 
-router.get('/:id', usersController.getById);
+router.post('/logout', trimRequest.all, verifyJWT, logout);
 
-router.post('/adicionar', usersController.add);
+router.get('/', trimRequest.all, verifyJWT, usersController.getList);
 
-router.put('/editar/:id', usersController.edit);
+router.get('/:id', trimRequest.all, verifyJWT, usersController.getById);
 
-router.delete('/delete/:id', usersController.delete);
+router.post('/adicionar', trimRequest.all, verifyJWT, usersController.add);
+
+router.put('/editar/:id', trimRequest.all, verifyJWT, usersController.edit);
+
+router.delete('/delete/:id', trimRequest.all, verifyJWT, usersController.delete);
 
 module.exports = router;

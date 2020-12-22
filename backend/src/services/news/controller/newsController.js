@@ -7,7 +7,7 @@ module.exports = {
     .catch(error => res.status(500).json(error));
 
     if(news == null)
-        res.status(404).json("Notícia não localizada.")
+        res.status(404).json({errorCode:404,message:"Notícia não localizada."})
     else 
         return res.json(news)
   },
@@ -18,7 +18,7 @@ module.exports = {
         .catch(error => res.status(500).json(error));
 
     if(news == null)
-        res.status(404).json("Notícia não localizada.")
+        res.status(404).json({errorCode:404,message:"Notícia não localizada."})
     else 
         return res.json(news)
   },
@@ -37,7 +37,7 @@ module.exports = {
       });
 
       if(news == null)
-        res.status(404).json("Notícia não localizada.")
+        res.status(404).json({errorCode:404,message:"Notícia não localizada."})
       else 
         return res.json(news)
     },
@@ -53,7 +53,7 @@ module.exports = {
             .catch(error => res.status(500).json(error));
     
         if(news == null)
-            res.status(404).json("Notícia não localizada.")
+            res.status(404).json({errorCode:404,message:"Notícia não localizada."})
         else 
             return res.json(news)
     },
@@ -63,7 +63,7 @@ module.exports = {
             .catch(error => res.status(500).json(error));
 
         if(news == null)
-            res.status(404).json("Notícia não localizada.")
+            res.status(404).json({errorCode:404,message:"Notícia não localizada."})
         else 
             return res.json(news)
     }

@@ -1,26 +1,15 @@
-import bcrypt from 'bcrypt-nodejs'
-import validator from 'validator'
-import mongoosePaginate from 'mongoose-paginate-v2'
-import { roleDefault, roles } from '../constants/UserConstants'
-
+const validator = require('validator')
+const bcrypt = require('bcrypt-nodejs')
 var mongoose = require('mongoose')
 
 const UserSchema = new mongoose.Schema(
   {
-    firstName: {
+    name: {
       type: String,
       required: true
     },
-    lastName: {
+    login: {
       type: String,
-      required: true
-    },
-    email: {
-      type: String,
-      validate: {
-        validator: validator.isEmail,
-        message: 'EMAIL_IS_NOT_VALID'
-      },
       lowercase: true,
       unique: true,
       required: true
@@ -29,28 +18,6 @@ const UserSchema = new mongoose.Schema(
       type: String,
       required: true,
       select: false
-    },
-    role: [{
-      type: String,
-      enum: roles,
-      default: roleDefault
-    }],
-    phone: {
-      type: String
-    },
-    city: {
-      type: String
-    },
-    country: {
-      type: String
-    },
-    // loginAttempts: {
-    //   type: Number,
-    //   default: 0,
-    //   select: false
-    // },
-    enabled: {
-      type: Boolean
     }
   },
   {
@@ -92,5 +59,4 @@ UserSchema.methods.comparePassword = function(passwordAttempt, cb) {
     err ? cb(err) : cb(null, isMatch)
   )
 }
-UserSchema.plugin(mongoosePaginate)
 module.exports = mongoose.model('User', UserSchema)

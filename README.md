@@ -17,3 +17,14 @@ O usuário master inicial é
 login: admin
 senha: 1234
 
+
+
+ CRUD DE NOTÍCIAS EM REACT JS,
+ API RESTful EM NODE JS,
+ ARQUITETURA RESTful,
+ BD NoSQL - MONGO DB,
+Técnicas modernas - (Arrow functions, Default value of parameters, Destructuring, Rest e Spread, Import e Export, Template Literals, etc),
+ Projeto conteinerizado ,
+ Uso parcial do Redux,
+ Implementação de processo de autenticação na API,
+

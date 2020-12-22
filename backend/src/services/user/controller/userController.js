@@ -7,7 +7,7 @@ module.exports = {
     .catch(error => res.status(500).json(error));
 
     if(user == null)
-        res.status(404).json("Notícia não localizada.")
+        res.status(404).json("Usuário não localizada.")
     else 
         return res.json(user)
   },
@@ -18,7 +18,7 @@ module.exports = {
         .catch(error => res.status(500).json(error));
 
     if(user == null)
-        res.status(404).json("Notícia não localizada.")
+        res.status(404).json({errorCode:404,message:"Usuário não localizada."})
     else 
         return res.json(user)
   },
@@ -37,7 +37,7 @@ module.exports = {
       });
 
       if(user == null)
-        res.status(404).json("Notícia não localizada.")
+        res.status(404).json("Usuário não localizada.")
       else 
         return res.json(user)
   },
@@ -53,7 +53,7 @@ module.exports = {
             .catch(error => res.status(500).json(error));
 
         if(user == null)
-            res.status(404).json("Notícia não localizada.")
+            res.status(404).json("Usuário não localizada.")
         else 
             return res.json(user)
 
@@ -70,7 +70,7 @@ module.exports = {
             .catch(error => res.status(500).json(error));
     
         if(user == null)
-            res.status(404).json("Notícia não localizada.")
+            res.status(404).json("Usuário não localizada.")
         else 
             return res.json(user)
     },
@@ -80,7 +80,7 @@ module.exports = {
             .catch(error => res.status(500).json(error));
 
         if(user == null)
-            res.status(404).json("Notícia não localizada.")
+            res.status(404).json("Usuário não localizada.")
         else 
             return res.json(user)
     }

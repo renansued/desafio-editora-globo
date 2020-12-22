@@ -3,10 +3,10 @@ version: '3.8'
 services:
   frontend:
     container_name: REACTJS_SERVER_CONTAINER
-    build: '.'
+    build: './frontend/'
 
     volumes:
-      - ./:/react-app
+      - ./frontend/:/react-app
     depends_on:
       - server
       - db
@@ -17,11 +17,11 @@ services:
 
   server:
     container_name: NODEJS_SERVER_CONTAINER
-    build: '.'
+    build: './backend/'
     
     volumes:
-      - ./:/node-app
-      - ./node_modules:/node-app/node_modules
+      - ./backend/:/node-app
+      - ./backend/node_modules:/node-app/node_modules
     environment:
       NODE_ENV: development
     depends_on:
@@ -37,4 +37,4 @@ services:
     ports:
       - '27017:27017'
     volumes:
-      - ./data/db:/data/db
+      - ./backend/data/db:/data/db

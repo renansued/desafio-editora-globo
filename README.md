@@ -13,3 +13,7 @@ propostas vs alcançadas || Metas
     Ok    ||     OK     || Implementação de processo de autenticação na API
 
 
+O usuário master inicial é 
+login: admin
+senha: 1234
+

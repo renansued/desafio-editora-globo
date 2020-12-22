@@ -1,0 +1,186 @@
+{
+	"info": {
+		"_postman_id": "9d491a69-b468-4b1a-b514-5e1f8e0ac654",
+		"name": "Notícias",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "List",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:9000/api/news/all",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"api",
+						"news",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar By Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:9000/api/news/:id",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"api",
+						"news",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "5fe0c9aaadf3ff17d4921e9b"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Adicionar",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept-Language",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Titulo de teste21122\",\r\n    \"content\": \"conteudo teste\",\r\n    \"publishDate\": \"2020-12-18T14:56:59.301Z\"\r\n}"
+				},
+				"url": {
+					"raw": "localhost:9000/api/news/adicionar",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"api",
+						"news",
+						"adicionar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Editar",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept-Language",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Titulo de teste123\",\r\n    \"content\": \"conteudo teste\",\r\n    \"publishDate\": \"2020-12-18\"\r\n}"
+				},
+				"url": {
+					"raw": "localhost:9000/api/news/editar/:id",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"api",
+						"news",
+						"editar",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "5fe0c943adf3ff17d4921e97"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Deletar",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept-Language",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "localhost:9000/api/news/delete/:id",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"api",
+						"news",
+						"delete",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "5fe0c9aaadf3ff17d4921e9b"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
